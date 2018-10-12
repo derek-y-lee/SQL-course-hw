@@ -1,0 +1,175 @@
+mysql> source /Users/dereklee/Desktop/mysql_scripts/dlee_assignment7.sql
+Empty set (0.00 sec)
+
+/*Query 1: Returns same result as 
+
+SELECT DISTINCT category_name
+FROM category c JOIN product p
+ON c.category_id = p.category_id
+ORDER BY category_name;
+
+without using a JOIN but uses a WHERE clause and IN keyword*/
+
+Database changed
++---------------+
+| category_name |
++---------------+
+| Book          |
+| Camera        |
+| CD            |
+| Computer      |
+| DVD           |
+| printer       |
+| Video         |
++---------------+
+7 rows in set (0.00 sec)
+
+/*Query 2: Returns products with list price greater
+than average list price for all products by returning product_name
+and list_price columns for each product*/
+
++-----------------+------------+
+| product_name    | list_price |
++-----------------+------------+
+| HP LaserJet Pro |     500.99 |
++-----------------+------------+
+1 row in set (0.00 sec)
+
+/*Query 3: Displays category_name column from Category table,
+Returns one row for each category assigned to at least one product
+in Product table using subquery with EXISTS operator*/
+
++---------------+
+| category_name |
++---------------+
+| Book          |
+| Camera        |
+| CD            |
+| Computer      |
+| DVD           |
+| printer       |
+| Video         |
++---------------+
+7 rows in set (0.00 sec)
+
+/*Query 4: Displays the three columns: 
+email_address, order_id, and the order total for each customer.*/
+
++-----------------------------+----------+-------------+
+| email_address               | order_id | order_total |
++-----------------------------+----------+-------------+
+| allan.sherwood@yahoo.com    |        1 |      961.62 |
+| barryz@gmail.com            |        2 |     1676.69 |
+| allan.sherwood@yahoo.com    |        3 |     3406.21 |
+| christineb@solarone.com     |        4 |     1694.76 |
+| david.goldstein@hotmail.com |        5 |     1304.00 |
+| erinv@gmail.com             |        6 |     1304.00 |
+| frankwilson@sbcglobal.net   |        7 |     1320.75 |
+| gary_hernandez@yahoo.com    |        8 |       47.50 |
+| david.goldstein@hotmail.com |        9 |      844.13 |
+| barryz@gmail.com            |       10 |      602.10 |
+| barryz@gmail.com            |       11 |      165.99 |
++-----------------------------+----------+-------------+
+11 rows in set (0.00 sec)
+
+/*Query 5: Uses a subquery to return one row per customer, representing 
+the customer’s oldest order (the one with the earliest date). 
+Each row should include these three columns: email_address, order_id, and order_date.*/
+
++--------------------------+----------+---------------------+
+| email_address            | order_id | order_date          |
++--------------------------+----------+---------------------+
+| allan.sherwood@yahoo.com |        1 | 2015-03-28 09:40:28 |
++--------------------------+----------+---------------------+
+1 row in set (0.00 sec)
+
+/*Query 6: For each product, whose items were sold in more than one sales transaction, 
+displays the product ID, product name, and list price.*/
+
+
++------------+----------------------+------------+
+| product_id | product_name         | list_price |
++------------+----------------------+------------+
+|       1234 | Dell XPS 8700        |     999.00 |
+|       2234 | Lenovo H50 Desktop   |    1199.00 |
+|       5234 | HP Pavilion 15t Star |    1299.00 |
+|      10234 | Z Files              |      49.99 |
++------------+----------------------+------------+
+4 rows in set (0.00 sec)
+
+/*Query 7: Displays the last name and first name of customers 
+who have purchased an item that costs more than $300 (item_price)
+using subquery*/
+
++-----------+------------+
+| last_name | first_name |
++-----------+------------+
+| Sherwood  | Allan      |
+| Zimmer    | Barry      |
+| Brown     | Christine  |
+| Goldstein | David      |
+| Valentino | Erin       |
+| Wilson    | Frank Lee  |
++-----------+------------+
+6 rows in set (0.00 sec)
+
+/*Query 8: Displays the last name, first name, and email address 
+of the customers who made the purchase with order IDs 1, 2, and 3.*/
+
++-----------+------------+--------------------------+
+| last_name | first_name | email_address            |
++-----------+------------+--------------------------+
+| Sherwood  | Allan      | allan.sherwood@yahoo.com |
+| Zimmer    | Barry      | barryz@gmail.com         |
++-----------+------------+--------------------------+
+2 rows in set (0.00 sec)
+
+/*Query 9: Displays the last name, first name, and email address
+of customers who have purchased an item that was supplied by a 
+vendor with a company name that begins with the letter H.*/
+
++-----------+------------+-----------------------------+
+| last_name | first_name | email_address               |
++-----------+------------+-----------------------------+
+| Wilson    | Frank Lee  | frankwilson@sbcglobal.net   |
+| Zimmer    | Barry      | barryz@gmail.com            |
+| Brown     | Christine  | christineb@solarone.com     |
+| Goldstein | David      | david.goldstein@hotmail.com |
++-----------+------------+-----------------------------+
+4 rows in set (0.00 sec)
+
+/*Query 10: For each product that has more than two items 
+sold within all sales transactions, 
+retrieves the product id, product name, and product price.*/
+
++------------+----------------------+------------+
+| product_id | product_name         | list_price |
++------------+----------------------+------------+
+|       1234 | Dell XPS 8700        |     999.00 |
+|       5234 | HP Pavilion 15t Star |    1299.00 |
++------------+----------------------+------------+
+2 rows in set (0.01 sec)
+
+
+/*Query 11: Determines which orders had a higher total amount due than order #7*/
+
++----------+---------+
+| order_id | total   |
++----------+---------+
+|        2 | 1676.69 |
+|        3 | 3406.21 |
+|        4 | 1694.76 |
++----------+---------+
+3 rows in set (0.00 sec)
+
+/*Query 12: Displays the order ID, order date, and ship date 
+for the order that had the longest shipping delay.*/ 
+
++----------+---------------------+---------------------+
+| order_id | order_date          | ship_date           |
++----------+---------------------+---------------------+
+|        4 | 2015-03-30 15:22:31 | 2015-04-03 16:32:21 |
++----------+---------------------+---------------------+
+1 row in set (0.00 sec)
+
+mysql> notee

@@ -1,0 +1,172 @@
+mysql> source /Users/dereklee/Desktop/mysql_scripts/dlee_assignment1.sql
+Show warnings enabled.
+--------------
+/*  Assignment 1.sql
+Derek Lee
+CS 31A, Winter 2018 */
+
+ /*enable warnings! */
+
+/*Initiates college database as long as there's no duplicate*/
+CREATE DATABASE IF NOT EXISTS college
+--------------
+
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+Note (Code 1007): Can't create database 'college'; database exists
+--------------
+/*Use college database*/
+USE college
+--------------
+
+Query OK, 0 rows affected (0.00 sec)
+
+--------------
+/*Creates a table called instructor to store values*/
+
+CREATE TABLE instructor (
+ emp_num int,
+ dept_code varchar(10),
+ office varchar(50),
+ degree varchar(5)
+)ENGINE = INNODB
+--------------
+
+ERROR 1050 (42S01): Table 'instructor' already exists
+--------------
+/*Inserts values into table to create the table's entries*/
+INSERT INTO instructor VALUES('103','HIST','DRE 156','Ph.D.')
+--------------
+
+Query OK, 1 row affected (0.01 sec)
+
+--------------
+INSERT INTO instructor VALUES('104','ENG','DRE 102','MA')
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+INSERT INTO instructor VALUES('105','ACCT','KLR 229D','Ph.D.')
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+INSERT INTO instructor VALUES('110','BIOL','AAK 160','Ph.D.')
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+INSERT INTO instructor VALUES('114','ACCT','KLR 211','Ph.D.')
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+INSERT INTO instructor VALUES('209','CIS','KLR 333','Ph.D.')
+--------------
+
+Query OK, 1 row affected (0.00 sec)
+
+--------------
+/*Shows tables in MySQL Workbench*/
+SHOW TABLES
+--------------
+
++-------------------+
+| Tables_in_college |
++-------------------+
+| instructor        |
++-------------------+
+1 row in set (0.00 sec)
+
+--------------
+/*Organizes the instructor table with values in descending numerical order*/
+DESC instructor
+--------------
+
++-----------+-------------+------+-----+---------+-------+
+| Field     | Type        | Null | Key | Default | Extra |
++-----------+-------------+------+-----+---------+-------+
+| emp_num   | int(11)     | YES  |     | NULL    |       |
+| dept_code | varchar(10) | YES  |     | NULL    |       |
+| office    | varchar(50) | YES  |     | NULL    |       |
+| degree    | varchar(5)  | YES  |     | NULL    |       |
++-----------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+--------------
+/*Displays everything from the instructor table*/
+SELECT *
+FROM instructor
+--------------
+
++---------+-----------+----------+--------+
+| emp_num | dept_code | office   | degree |
++---------+-----------+----------+--------+
+|     103 | HIST      | DRE 156  | Ph.D.  |
+|     104 | ENG       | DRE 102  | MA     |
+|     105 | ACCT      | KLR 229D | Ph.D.  |
+|     110 | BIOL      | AAK 160  | Ph.D.  |
+|     114 | ACCT      | KLR 211  | Ph.D.  |
+|     209 | CIS       | KLR 333  | Ph.D.  |
+|     103 | HIST      | DRE 156  | Ph.D.  |
+|     104 | ENG       | DRE 102  | MA     |
+|     105 | ACCT      | KLR 229D | Ph.D.  |
+|     110 | BIOL      | AAK 160  | Ph.D.  |
+|     114 | ACCT      | KLR 211  | Ph.D.  |
+|     209 | CIS       | KLR 333  | Ph.D.  |
+|     103 | HIST      | DRE 156  | Ph.D.  |
+|     104 | ENG       | DRE 102  | MA     |
+|     105 | ACCT      | KLR 229D | Ph.D.  |
+|     110 | BIOL      | AAK 160  | Ph.D.  |
+|     114 | ACCT      | KLR 211  | Ph.D.  |
+|     209 | CIS       | KLR 333  | Ph.D.  |
+|     103 | HIST      | DRE 156  | Ph.D.  |
+|     104 | ENG       | DRE 102  | MA     |
+|     105 | ACCT      | KLR 229D | Ph.D.  |
+|     110 | BIOL      | AAK 160  | Ph.D.  |
+|     114 | ACCT      | KLR 211  | Ph.D.  |
+|     209 | CIS       | KLR 333  | Ph.D.  |
++---------+-----------+----------+--------+
+24 rows in set (0.01 sec)
+
+--------------
+/*Displays emp_num and degree from the instructor table*/
+SELECT emp_num, degree
+FROM instructor
+--------------
+
++---------+--------+
+| emp_num | degree |
++---------+--------+
+|     103 | Ph.D.  |
+|     104 | MA     |
+|     105 | Ph.D.  |
+|     110 | Ph.D.  |
+|     114 | Ph.D.  |
+|     209 | Ph.D.  |
+|     103 | Ph.D.  |
+|     104 | MA     |
+|     105 | Ph.D.  |
+|     110 | Ph.D.  |
+|     114 | Ph.D.  |
+|     209 | Ph.D.  |
+|     103 | Ph.D.  |
+|     104 | MA     |
+|     105 | Ph.D.  |
+|     110 | Ph.D.  |
+|     114 | Ph.D.  |
+|     209 | Ph.D.  |
+|     103 | Ph.D.  |
+|     104 | MA     |
+|     105 | Ph.D.  |
+|     110 | Ph.D.  |
+|     114 | Ph.D.  |
+|     209 | Ph.D.  |
++---------+--------+
+24 rows in set (0.00 sec)
+
+mysql> notee

@@ -1,0 +1,200 @@
+mysql> source /Users/dereklee/Desktop/mysql_scripts/dlee_assignment6.sql
+Empty set (0.00 sec)
+
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+
+/*Query 1: Returns count of number of orders in ORDERS table
+AND sum of tax_amount column in ORDERS table*/
++------------------+------------+
+| number_of_orders | tax_amount |
++------------------+------------+
+|               11 |     122.24 |
++------------------+------------+
+1 row in set (0.00 sec)
+
+/*Query 2: Displays product ID and number of orders placed for each product
+in decreasing order and labeled as NumOrders*/
+
++------------+-----------+
+| product_id | NumOrders |
++------------+-----------+
+|      10234 |         2 |
+|       2234 |         2 |
+|       2234 |         1 |
+|       4234 |         1 |
+|       3234 |         1 |
+|       1234 |         1 |
+|       5234 |         1 |
+|      13234 |         1 |
+|       5234 |         1 |
+|       5234 |         1 |
+|       1234 |         1 |
+|       7234 |         1 |
+|       9234 |         1 |
+|      10234 |         1 |
+|       1234 |         1 |
+|      14234 |         1 |
+|      15234 |         1 |
+|      16234 |         1 |
+|      11234 |         1 |
+|       6234 |         1 |
+|      18234 |         1 |
+|      19234 |         1 |
++------------+-----------+
+22 rows in set (0.00 sec)
+
+/*Query 3: Returns one row for each category that has products
+with the following columns:
+1) The category_name column from the CATEGORY table
+2) The count of products in the PRODUCT table
+3) The list price of the most expensive product in PRODUCT table*/
+
++---------------+---------------+------------------------+
+| category_name | product_count | most_expensive_product |
++---------------+---------------+------------------------+
+| Computer      |             6 |                2517.00 |
+| DVD           |             3 |                  49.99 |
+| printer       |             3 |                 599.00 |
+| CD            |             2 |                  99.99 |
+| Book          |             2 |                  30.00 |
+| Video         |             2 |                  49.99 |
+| Camera        |             1 |                 755.99 |
++---------------+---------------+------------------------+
+7 rows in set (0.00 sec)
+
+/*Query 4: Returns one row for each customer that has orders with:
+1) The email_address column from CUSTOMER table
+2) Sum of the item price in ORDERITEMS table multiplied by quantity
+3) Sum of discount amount column in ORDERITEMS multiplied by quantity*/
+
++-----------------------------+------------------+-----------------------+
+| email_address               | item_price_total | discount_amount_total |
++-----------------------------+------------------+-----------------------+
+| allan.sherwood@yahoo.com    |         85444.00 |              19766.45 |
+| barryz@gmail.com            |        102532.80 |              23719.74 |
+| christineb@solarone.com     |         34177.60 |               7906.58 |
+| david.goldstein@hotmail.com |         51266.40 |              11859.87 |
+| erinv@gmail.com             |         17088.80 |               3953.29 |
+| frankwilson@sbcglobal.net   |         68355.20 |              15813.16 |
+| gary_hernandez@yahoo.com    |         17088.80 |               3953.29 |
++-----------------------------+------------------+-----------------------+
+7 rows in set (0.00 sec)
+
+/*Query 5: Returns one row for each customer that has orders with:
+1) The email_address column from CUSTOMER table
+2) Count of the number of orders
+3) Total amount for each order*/
+
++-----------------------------+-------------+-------------+
+| email_address               | order_count | order_total |
++-----------------------------+-------------+-------------+
+| allan.sherwood@yahoo.com    |           5 |     4230.59 |
+| barryz@gmail.com            |           6 |     2429.78 |
+| christineb@solarone.com     |           2 |     1689.76 |
+| david.goldstein@hotmail.com |           3 |     2138.13 |
+| frankwilson@sbcglobal.net   |           4 |     1305.75 |
++-----------------------------+-------------+-------------+
+5 rows in set (0.00 sec)
+
+/*Query 6: Modifies solution to query 5 so it only counts
+and totals item_price greater than 400*/
+
++-----------------------------+-------------+-------------+
+| email_address               | order_count | order_total |
++-----------------------------+-------------+-------------+
+| allan.sherwood@yahoo.com    |           4 |     4145.59 |
+| barryz@gmail.com            |           3 |     2230.73 |
+| david.goldstein@hotmail.com |           2 |     2098.13 |
+| frankwilson@sbcglobal.net   |           2 |     1224.94 |
++-----------------------------+-------------+-------------+
+4 rows in set (0.00 sec)
+
+/*Query 7: Returns email address from CUSTOMER 
+and count of distinct products from customer's orders*/
+
++-----------------------------+--------------------+
+| email_address               | number_of_products |
++-----------------------------+--------------------+
+| allan.sherwood@yahoo.com    |                  5 |
+| barryz@gmail.com            |                  6 |
+| christineb@solarone.com     |                  2 |
+| david.goldstein@hotmail.com |                  3 |
+| erinv@gmail.com             |                  1 |
+| frankwilson@sbcglobal.net   |                  4 |
+| gary_hernandez@yahoo.com    |                  1 |
++-----------------------------+--------------------+
+7 rows in set (0.00 sec)
+
+/*Query 8: Retrieves vendor ID and number of products
+with list price of $100 or higher for each vendor*/
+
++-----------+--------------------+
+| vendor_id | number_of_products |
++-----------+--------------------+
+|         2 |                  6 |
+|         3 |                  1 |
+|         5 |                  3 |
++-----------+--------------------+
+3 rows in set (0.00 sec)
+
+/*Query 9: For each group where +1 products are from same category
+and supplied by the same vendor, returns vendor id, product category id,
+number of products in group, and average price of products in group*/
+
++-----------+-------------+--------------------+--------------------+
+| vendor_id | category_id | number_of_products | average_list_price |
++-----------+-------------+--------------------+--------------------+
+|         2 |          11 |                  5 |        1423.998000 |
+|         5 |          41 |                  2 |          24.975000 |
+|         5 |          61 |                  3 |         433.660000 |
+|         9 |          31 |                  2 |          31.970000 |
++-----------+-------------+--------------------+--------------------+
+4 rows in set (0.00 sec)
+
+/*Query 10: Determines how many products are in the Printer category*/
+
++--------------------+
+| number_of_printers |
++--------------------+
+|                  2 |
++--------------------+
+1 row in set (0.00 sec)
+
+
+/*Query 11: Returns total profit generated by sales to customer 77779*/
+
++--------+
+| profit |
++--------+
+|   0.00 |
++--------+
+1 row in set (0.00 sec)
+
+
+/*Query 12: Returns following columns from ORDERS table
+1) The card_number column
+2) The length of the card_number column
+3) The last four digits of the card_number column
+Final column returns XXXX’s for all numbers but last 4 digits of card number*/
+
++------------------+--------------------+------------------+---------------------+
+| card_number      | card_number_length | last_four_digits | formatted_number    |
++------------------+--------------------+------------------+---------------------+
+| 4111111111111111 |                 16 | 1111             | XXXX-XXXX-XXXX-1111 |
+| 4012888888881881 |                 16 | 1881             | XXXX-XXXX-XXXX-1881 |
+| 4111111111111111 |                 16 | 1111             | XXXX-XXXX-XXXX-1111 |
+| 378282246310005  |                 15 | 0005             | XXXX-XXXX-XXXX-0005 |
+| 4111111111111333 |                 16 | 1333             | XXXX-XXXX-XXXX-1333 |
+| 6011111111111117 |                 16 | 1117             | XXXX-XXXX-XXXX-1117 |
+| 5555555555554444 |                 16 | 4444             | XXXX-XXXX-XXXX-4444 |
+| 4012888888881991 |                 16 | 1991             | XXXX-XXXX-XXXX-1991 |
+| 4111111111111333 |                 16 | 1333             | XXXX-XXXX-XXXX-1333 |
+| 4012888888881881 |                 16 | 1881             | XXXX-XXXX-XXXX-1881 |
+| 4012888888881881 |                 16 | 1881             | XXXX-XXXX-XXXX-1881 |
++------------------+--------------------+------------------+---------------------+
+11 rows in set (0.00 sec)
+
+mysql> notee

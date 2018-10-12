@@ -1,0 +1,194 @@
+mysql> source /Users/dereklee/Desktop/mysql_scripts/dlee_assignment3.sql
+Empty set (0.00 sec)
+
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
++-----------+------------+-------------+
+| last_name | first_name | customer_id |
++-----------+------------+-------------+
+| Zimmer    | Barry      |       22229 |
+| Brown     | Christine  |       33339 |
+| Goldstein | David      |       44449 |
+| Valentino | Erin       |       55559 |
+| Wilson    | Frank Lee  |       66669 |
++-----------+------------+-------------+
+5 rows in set (0.00 sec)
+
++------------+-----------+---------+
+| first_name | last_name | salary  |
++------------+-----------+---------+
+| Marwan     | Lee       | 2800.00 |
+| John       | Alexander | 2500.00 |
+| John       | Griffith  | 4500.00 |
++------------+-----------+---------+
+3 rows in set (0.01 sec)
+
++----------+---------------------+-----------+
+| order_id | order_date          | ship_date |
++----------+---------------------+-----------+
+|        5 | 2015-03-31 05:43:11 | NULL      |
+|        6 | 2015-03-31 18:37:22 | NULL      |
+|        8 | 2015-04-02 11:26:38 | NULL      |
+|        9 | 2015-04-03 12:22:31 | NULL      |
+|       10 | 2015-05-03 12:22:31 | NULL      |
+|       11 | 2015-06-03 12:22:31 | NULL      |
++----------+---------------------+-----------+
+6 rows in set (0.00 sec)
+
++-----------+------------+
+| last_name | first_name |
++-----------+------------+
+| Goldstein | David      |
+| Valentino | Erin       |
++-----------+------------+
+2 rows in set (0.00 sec)
+
++------------+---------------------+------------+
+| product_id | product_name        | list_price |
++------------+---------------------+------------+
+|       7234 | Classical Music     |      99.99 |
+|       8234 | Pop 3               |      49.99 |
+|      10234 | Z Files             |      49.99 |
+|      12234 | Chemistry           |      30.00 |
+|      14234 | From Another Planet |      49.99 |
+|      16234 | HP Color LaserJet   |     599.00 |
+|      17234 | Canon               |     755.99 |
+|      18234 | HP LaserJet Pro     |     200.99 |
+|      19234 | HP LaserJet Pro     |     500.99 |
++------------+---------------------+------------+
+9 rows in set (0.00 sec)
+
++---------------------+----------+---------------------+
+| order_date          | order_id | ship_date           |
++---------------------+----------+---------------------+
+| 2015-03-31 18:37:22 |        6 | NULL                |
+| 2015-03-31 05:43:11 |        5 | NULL                |
+| 2015-03-30 15:22:31 |        4 | 2015-04-03 16:32:21 |
+| 2015-03-29 09:44:58 |        3 | 2015-03-31 09:11:41 |
+| 2015-03-28 11:23:20 |        2 | 2015-03-29 12:52:14 |
+| 2015-03-28 09:40:28 |        1 | 2015-03-30 15:32:51 |
++---------------------+----------+---------------------+
+6 rows in set (0.00 sec)
+
++---------------------+----------+---------------------+
+| order_date          | order_id | ship_date           |
++---------------------+----------+---------------------+
+| 2015-03-31 18:37:22 |        6 | NULL                |
+| 2015-03-31 05:43:11 |        5 | NULL                |
+| 2015-03-30 15:22:31 |        4 | 2015-04-03 16:32:21 |
+| 2015-03-29 09:44:58 |        3 | 2015-03-31 09:11:41 |
+| 2015-03-28 11:23:20 |        2 | 2015-03-29 12:52:14 |
+| 2015-03-28 09:40:28 |        1 | 2015-03-30 15:32:51 |
++---------------------+----------+---------------------+
+6 rows in set, 4 warnings (0.00 sec)
+
++---------------------+----------+---------------------+
+| order_date          | order_id | ship_date           |
++---------------------+----------+---------------------+
+| 2015-03-31 18:37:22 |        6 | NULL                |
+| 2015-03-31 05:43:11 |        5 | NULL                |
+| 2015-03-30 15:22:31 |        4 | 2015-04-03 16:32:21 |
+| 2015-03-29 09:44:58 |        3 | 2015-03-31 09:11:41 |
+| 2015-03-28 11:23:20 |        2 | 2015-03-29 12:52:14 |
+| 2015-03-28 09:40:28 |        1 | 2015-03-30 15:32:51 |
++---------------------+----------+---------------------+
+6 rows in set, 1 warning (0.00 sec)
+
++------------+--------------+-----------------------+
+| product_id | product_code | product_name          |
++------------+--------------+-----------------------+
+|       6234 | lap9000      | Dell Inspiron 17 5000 |
+|       1234 | comp1230     | Dell XPS 8700         |
++------------+--------------+-----------------------+
+2 rows in set (0.00 sec)
+
++------------+-------------+-----------+------------+
+| product_id | category_id | vendor_id | list_price |
++------------+-------------+-----------+------------+
+|       1234 |          11 |         2 |     999.00 |
+|       2234 |          11 |         2 |    1199.00 |
+|       3234 |          11 |         2 |    2517.00 |
+|       4234 |          11 |         2 |     989.99 |
+|       5234 |          11 |         3 |    1299.00 |
+|       6234 |          11 |         2 |    1415.00 |
++------------+-------------+-----------+------------+
+6 rows in set (0.00 sec)
+
++----------+-------------+-------------+----------+---------------------+-------------+------------+---------------------+-----------------+------------------+-----------------+--------------+--------------------+
+| order_id | customer_id | employee_id | store_id | order_date          | ship_amount | tax_amount | ship_date           | ship_address_id | card_type        | card_number     | card_expires | billing_address_id |
++----------+-------------+-------------+----------+---------------------+-------------+------------+---------------------+-----------------+------------------+-----------------+--------------+--------------------+
+|        4 |       33339 |       88887 | S2       | 2015-03-30 15:22:31 |        5.00 |       0.00 | 2015-04-03 16:32:21 |               4 | American Express | 378282246310005 | 04/2016      |                  4 |
++----------+-------------+-------------+----------+---------------------+-------------+------------+---------------------+-----------------+------------------+-----------------+--------------+--------------------+
+1 row in set (0.00 sec)
+
++-------------+---------------+
+| category_id | category_name |
++-------------+---------------+
+|          41 | Book          |
+|          71 | Camera        |
+|          21 | CD            |
+|          11 | Computer      |
+|          31 | DVD           |
+|          61 | printer       |
+|          51 | Video         |
++-------------+---------------+
+7 rows in set (0.00 sec)
+
+ERROR 1062 (23000): Duplicate entry '71' for key 'PRIMARY'
+Query OK, 0 rows affected (0.01 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
++-------------+---------------+
+| category_id | category_name |
++-------------+---------------+
+|          41 | Book          |
+|          71 | Camera        |
+|          21 | CD            |
+|          11 | Computer      |
+|          31 | DVD           |
+|          61 | printer       |
+|          51 | Video         |
++-------------+---------------+
+7 rows in set (0.00 sec)
+
++-------------+
+| category_id |
++-------------+
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
+| category_id |
++-------------+
+19 rows in set (0.00 sec)
+
+ERROR 1062 (23000): Duplicate entry '17234' for key 'PRIMARY'
+ERROR 1451 (23000): Cannot delete or update a parent row: a foreign key constraint fails (`bookstore`.`product`, CONSTRAINT `products_fk_category` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`))
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 1  Changed: 0  Warnings: 0
+
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+Rows matched: 0  Changed: 0  Warnings: 0
+
+ERROR 1062 (23000): Duplicate entry '99999' for key 'PRIMARY'
+mysql> notee

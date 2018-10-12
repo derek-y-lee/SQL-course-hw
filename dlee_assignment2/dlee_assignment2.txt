@@ -1,0 +1,243 @@
+/* Assignment 2.sql 
+  Derek Lee
+   CS 31A, Winter 2018 */
+
+mysql> source /Users/dereklee/Desktop/mysql_scripts/dlee_assignment 2.sql
+Empty set (0.00 sec)
+
+Query OK, 1 row affected, 1 warning (0.00 sec)
+
+
+/* This script creates the bookstore database */
+
+Database changed
++----------------+----------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+| user()         | current_date() | version() | @@sql_mode                                                                                                                                |
++----------------+----------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+| root@localhost | 2018-01-20     | 5.7.20    | ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION |
++----------------+----------------+-----------+-------------------------------------------------------------------------------------------------------------------------------------------+
+1 row in set (0.00 sec)
+
+/* Query 1: Display rows from CUSTOMER table whose customer ID is not equal to 77779*/
+/* Display customer's last name, first name, customer ID*/
+
++-----------+------------+-------------+
+| last_name | first_name | customer_id |
++-----------+------------+-------------+
+| Sherwood  | Allan      |       11119 |
+| Zimmer    | Barry      |       22229 |
+| Brown     | Christine  |       33339 |
+| Goldstein | David      |       44449 |
+| Valentino | Erin       |       55559 |
+| Wilson    | Frank Lee  |       66669 |
+| Esway     | Heather    |       88889 |
++-----------+------------+-------------+
+7 rows in set (0.00 sec)
+
+/* Query 2: Displays product name and description columns from PRODUCT table where category ID is greater than 21 */
+
++---------------------+--------------------------------------------------------------+
+| product_name        | description                                                  |
++---------------------+--------------------------------------------------------------+
+| 2412: The Return    | Aliens return                                                |
+| Z Files             | Series on mysterious activities                              |
+| Modern Science      | A description of modern science                              |
+| Chemistry           | Introduction to Chemistry                                    |
+| Space Force 9       | Adventures of heroes                                         |
+| From Another Planet | Alien from another planet lands on Earth                     |
+| Supernova           | A star explodes                                              |
+| HP Color LaserJet   | HP Color LaserJet Enterprise M553n Printer                   |
+| HP LaserJet Pro     | HP LaserJet Pro M277dw Multifunction Color Printer           |
+| HP LaserJet Pro     | HP LaserJet Pro M225dw Black and White Multifunction Printer |
++---------------------+--------------------------------------------------------------+
+10 rows in set (0.00 sec)
+
+/* Query 3: Display rows from CUSTOMER table where values in customer ID column is 11119 */
+/* Displays customer's last name, first name, customer ID, and email address*/
+
++-----------+------------+-------------+--------------------------+
+| last_name | first_name | customer_id | email_address            |
++-----------+------------+-------------+--------------------------+
+| Sherwood  | Allan      |       11119 | allan.sherwood@yahoo.com |
++-----------+------------+-------------+--------------------------+
+1 row in set (0.00 sec)
+
+/* Query 4: Displays item_id, item_price, discount_amount, quantity, price_total, discount_total, item_total from ORDERITEMS table */
+/* Only returns rows where item_total is greater than 900 in descending order */
+
++---------+------------+-----------------+----------+----------------+-------------+------------+
+| item_id | item_price | discount_amount | quantity | discount_total | price_total | item_total |
++---------+------------+-----------------+----------+----------------+-------------+------------+
+|       7 |    1199.00 |          359.70 |        2 |         719.40 |     2398.00 |    1678.60 |
+|       6 |    1299.00 |            0.00 |        1 |           0.00 |     1299.00 |    1299.00 |
+|       9 |    1299.00 |            0.00 |        1 |           0.00 |     1299.00 |    1299.00 |
+|      10 |    1299.00 |            0.00 |        1 |           0.00 |     1299.00 |    1299.00 |
+|       4 |    2517.00 |         1308.84 |        1 |        1308.84 |     2517.00 |    1208.16 |
++---------+------------+-----------------+----------+----------------+-------------+------------+
+5 rows in set (0.00 sec)
+
+/* Query 5: Displays store ID, region ID, region name columns from STORE table */
+
++----------+-----------+-------------+
+| store_id | region_id | region_name |
++----------+-----------+-------------+
+| S1       | C         | Chicagoland |
+| S2       | T         | Tristate    |
+| S3       | C         | Chicagoland |
+| S4       | T         | Tristate    |
+| S5       | I         | Indiana     |
+| S6       | I         | Indiana     |
+| S7       | N         | North       |
++----------+-----------+-------------+
+7 rows in set (0.00 sec)
+
+
+/* Query 6: Displays customer ID and email address for each customer in CUSTOMER table */
+
++-------------+-----------------------------+
+| customer_id | email_address               |
++-------------+-----------------------------+
+|       11119 | allan.sherwood@yahoo.com    |
+|       22229 | barryz@gmail.com            |
+|       33339 | christineb@solarone.com     |
+|       44449 | david.goldstein@hotmail.com |
+|       55559 | erinv@gmail.com             |
+|       66669 | frankwilson@sbcglobal.net   |
+|       77779 | gary_hernandez@yahoo.com    |
+|       88889 | heatheresway@mac.com        |
++-------------+-----------------------------+
+8 rows in set (0.00 sec)
+
+/* Query 7: Displays customer ID from ORDERS table once for each customer who's placed an order */
+
++-------------+
+| customer_id |
++-------------+
+|       11119 |
+|       22229 |
+|       33339 |
+|       44449 |
+|       55559 |
+|       66669 |
+|       77779 |
++-------------+
+7 rows in set (0.00 sec)
+
+/* Query 8: Create mailing list from ADDRESS table displaying customer ID, line1, line2, city, state, and zipcode */
+/* City and state is listed as one column of output with values separated by a comma */
+
++-------------+-------------------------+---------+----------+----------------+-------+--------------------+
+| customer_id | line1                   | line2   | zip_code | city           | state | citystate          |
++-------------+-------------------------+---------+----------+----------------+-------+--------------------+
+|       11119 | 100 East Ridgewood Ave. |         | 07652    | Paramus        | NJ    | Paramus, NJ        |
+|       11119 | 21 Rosewood Rd.         |         | 07677    | Woodcliff Lake | NJ    | Woodcliff Lake, NJ |
+|       22229 | 16285 Wendell St.       |         | 68135    | Omaha          | NE    | Omaha, NE          |
+|       33339 | 19270 NW Cornell Rd.    |         | 97006    | Beaverton      | OR    | Beaverton, OR      |
+|       44449 | 186 Vermont St.         | Apt. 2  | 94110    | San Francisco  | CA    | San Francisco, CA  |
+|       44449 | 1374 46th Ave.          |         | 94129    | San Francisco  | CA    | San Francisco, CA  |
+|       55559 | 6982 Palm Ave.          |         | 93711    | Fresno         | CA    | Fresno, CA         |
+|       66669 | 23 Mountain View St.    |         | 80208    | Denver         | CO    | Denver, CO         |
+|       77779 | 7361 N. 41st St.        | Apt. B  | 10012    | New York       | NY    | New York, NY       |
+|       77779 | 3829 Broadway Ave.      | Suite 2 | 10012    | New York       | NY    | New York, NY       |
+|       88889 | 2381 Buena Vista St.    |         | 90023    | Los Angeles    | CA    | Los Angeles, CA    |
+|       88889 | 291 W. Hollywood Blvd.  |         | 90024    | Los Angeles    | CA    | Los Angeles, CA    |
++-------------+-------------------------+---------+----------+----------------+-------+--------------------+
+12 rows in set (0.00 sec)
+
+/* Query 9: Displays product_name, list_price, discount_percent, discount_amount, discount_price from PRODUCT table */
+
++------------------------+------------+------------------+-----------------+----------------+
+| product_name           | list_price | discount_percent | discount_amount | discount_price |
++------------------------+------------+------------------+-----------------+----------------+
+| Dell XPS 8700          |     999.00 |            20.00 |      199.800000 |     799.200000 |
+| Lenovo H50 Desktop     |    1199.00 |            30.00 |      359.700000 |     839.300000 |
+| HP Envy 750qe Desktop  |    2517.00 |            52.00 |     1308.840000 |    1208.160000 |
+| Toshiba Satellite S55T |     989.99 |            20.00 |      197.998000 |     791.992000 |
+| HP Pavilion 15t Star   |    1299.00 |             0.00 |        0.000000 |    1299.000000 |
+| Dell Inspiron 17 5000  |    1415.00 |            39.00 |      551.850000 |     863.150000 |
+| Classical Music        |      99.99 |            30.00 |       29.997000 |      69.993000 |
+| Pop 3                  |      49.99 |            25.00 |       12.497500 |      37.492500 |
+| 2412: The Return       |      14.99 |            30.00 |        4.497000 |      10.493000 |
+| Z Files                |      49.99 |            15.00 |        7.498500 |      42.491500 |
+| Modern Science         |      19.95 |            20.00 |        3.990000 |      15.960000 |
+| Chemistry              |      30.00 |            20.00 |        6.000000 |      24.000000 |
+| Space Force 9          |      13.95 |            20.00 |        2.790000 |      11.160000 |
+| From Another Planet    |      49.99 |            20.00 |        9.998000 |      39.992000 |
+| Supernova              |      25.99 |            15.00 |        3.898500 |      22.091500 |
+| HP Color LaserJet      |     599.00 |            20.00 |      119.800000 |     479.200000 |
+| HP LaserJet Pro        |     200.99 |            20.00 |       40.198000 |     160.792000 |
+| HP LaserJet Pro        |     500.99 |            15.00 |       75.148500 |     425.841500 |
++------------------------+------------+------------------+-----------------+----------------+
+18 rows in set (0.00 sec)
+
+/* Query 10: Displays one column from CUSTOMER table named full_name joining last_name and first_name columns */
+
++------------------+
+| FULLNAME         |
++------------------+
+| Allan Sherwood   |
+| Barry Zimmer     |
+| Christine Brown  |
+| David Goldstein  |
+| Erin Valentino   |
+| Frank Lee Wilson |
+| Gary Hernandez   |
+| Heather Esway    |
++------------------+
+8 rows in set (0.00 sec)
+
+/* Query 11: Create list of each product name stored in PRODUCT table and category ID in which each product belongs */
+/* Reverse sequence of columns so category of product listed first */
+
++-------------+------------------------+
+| category_id | product_name           |
++-------------+------------------------+
+|          11 | Dell XPS 8700          |
+|          11 | Lenovo H50 Desktop     |
+|          11 | HP Envy 750qe Desktop  |
+|          11 | Toshiba Satellite S55T |
+|          11 | HP Pavilion 15t Star   |
+|          11 | Dell Inspiron 17 5000  |
+|          21 | Classical Music        |
+|          21 | Pop 3                  |
+|          31 | Space Force 9          |
+|          31 | From Another Planet    |
+|          31 | Supernova              |
+|          41 | Modern Science         |
+|          41 | Chemistry              |
+|          51 | 2412: The Return       |
+|          51 | Z Files                |
+|          61 | HP Color LaserJet      |
+|          61 | HP LaserJet Pro        |
+|          61 | HP LaserJet Pro        |
++-------------+------------------------+
+18 rows in set (0.00 sec)
+
+/* Query 12: Display new list price of each product as 20% more than original price */
+/* Display product_name, list_price, and new list price */
+
++------------------------+------------+----------------+
+| product_name           | list_price | new_list_price |
++------------------------+------------+----------------+
+| Dell XPS 8700          |     999.00 |      1198.8000 |
+| Lenovo H50 Desktop     |    1199.00 |      1438.8000 |
+| HP Envy 750qe Desktop  |    2517.00 |      3020.4000 |
+| Toshiba Satellite S55T |     989.99 |      1187.9880 |
+| HP Pavilion 15t Star   |    1299.00 |      1558.8000 |
+| Dell Inspiron 17 5000  |    1415.00 |      1698.0000 |
+| Classical Music        |      99.99 |       119.9880 |
+| Pop 3                  |      49.99 |        59.9880 |
+| 2412: The Return       |      14.99 |        17.9880 |
+| Z Files                |      49.99 |        59.9880 |
+| Modern Science         |      19.95 |        23.9400 |
+| Chemistry              |      30.00 |        36.0000 |
+| Space Force 9          |      13.95 |        16.7400 |
+| From Another Planet    |      49.99 |        59.9880 |
+| Supernova              |      25.99 |        31.1880 |
+| HP Color LaserJet      |     599.00 |       718.8000 |
+| HP LaserJet Pro        |     200.99 |       241.1880 |
+| HP LaserJet Pro        |     500.99 |       601.1880 |
++------------------------+------------+----------------+
+18 rows in set (0.00 sec)
+
+mysql> notee
